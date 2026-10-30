@@ -775,13 +775,23 @@ function submitBananaAnswer() {
             } else {
                 NoirAudio.playErrorBuzz();
                 feedbackEl.className = 'puzzle-feedback feedback-error';
-                feedbackEl.innerHTML = `<strong>✗ INCORRECT SOLUTION!</strong> ${data.message} (-25 PTS)`;
+                feedbackEl.innerHTML = `
+                    <strong>✗ INCORRECT CIPHER!</strong> ${data.message} (-25 PTS)
+                    <div style="margin-top: 0.85rem; display: flex; gap: 0.75rem; justify-content: center;">
+                        <button class="btn btn-small btn-primary" onclick="fetchBananaPuzzle()">🔄 FETCH NEW CIPHER</button>
+                    </div>
+                `;
                 Game.score = Math.max(0, Game.score - 25);
                 Game.mistakes++;
                 Game.puzzleStats.incorrect++;
                 updateNavUI();
 
                 if (submitBtn) submitBtn.disabled = false;
+                if (inputEl) {
+                    inputEl.disabled = false;
+                    inputEl.select();
+                    inputEl.focus();
+                }
 
                 // Check mistake limit
                 if (Game.mistakes >= Game.mistakeLimit) {
@@ -791,6 +801,9 @@ function submitBananaAnswer() {
             updatePuzzleStatsUI();
         } else {
             showToast(data.error || "Submission failed.");
+            if (data.error && data.error.includes("already been answered")) {
+                fetchBananaPuzzle();
+            }
             if (submitBtn) submitBtn.disabled = false;
         }
     })

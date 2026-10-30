@@ -201,6 +201,7 @@ require_once __DIR__ . '/config/config.php';
                 <div class="puzzle-controls">
                     <input type="number" id="puzzle-answer-input" class="puzzle-input" min="0" max="9" placeholder="?" autocomplete="off" onkeydown="if(event.key==='Enter') submitBananaAnswer();">
                     <button class="btn btn-primary" id="puzzle-submit-btn" onclick="submitBananaAnswer()">DECIPHER</button>
+                    <button class="btn btn-small" onclick="fetchBananaPuzzle()" title="Get a different puzzle">🔄 NEW CIPHER</button>
                     <button class="btn btn-small" onclick="skipPuzzle()">BYPASS (-50 PTS)</button>
                 </div>
 

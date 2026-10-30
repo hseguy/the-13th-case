@@ -139,7 +139,12 @@ function handleValidate() {
     $correctSolution = (int)$_SESSION['banana_solution'];
     $isCorrect = ($playerAnswer === $correctSolution);
 
-    $_SESSION['banana_answered'] = true;
+    // Only lock as answered when solved correctly, or allow retry on incorrect
+    if ($isCorrect) {
+        $_SESSION['banana_answered'] = true;
+    } else {
+        $_SESSION['banana_answered'] = false;
+    }
     $_SESSION['puzzle_stats']['total']++;
 
     if ($isCorrect) {
