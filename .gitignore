@@ -1,0 +1,30 @@
+# Ignore OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE / editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+nbproject/
+
+# Logs
+*.log
+error_log
+
+# Environment and secrets
+.env
+.env.local
+
+# Compiled / temp
+*.tmp
+*.bak
+tmp/
+
+# Node (not used yet, but just in case)
+node_modules/
+
