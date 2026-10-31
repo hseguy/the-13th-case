@@ -34,6 +34,8 @@ if (session_status() === PHP_SESSION_NONE) {
     @session_start();
 }
 
+require_once __DIR__ . '/environment.php';
+
 // Application Constants
 define('GAME_TITLE', 'THE 13TH CASE');
 define('GAME_SUBTITLE', 'A Murder. Five Suspects. One Truth.');
