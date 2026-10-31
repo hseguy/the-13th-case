@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
+  <defs>
+    <radialGradient id="clueBg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#241d17"/>
+      <stop offset="60%" stop-color="#120e0a"/>
+      <stop offset="100%" stop-color="#080705"/>
+    </radialGradient>
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#604a18"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="260" height="200" fill="url(#clueBg)"/>
+  <rect x="6" y="6" width="248" height="188" fill="none" stroke="url(#goldRim)" stroke-width="1.5"/>
+  <rect x="10" y="10" width="240" height="180" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.8" stroke-dasharray="4,2"/>
+
+  <!-- Evidence Artwork -->
+  <g transform="translate(0, -10)">
+      <polygon points="80,45 175,45 165,130 90,130 75,90" fill="#e8dcbe" stroke="#332" stroke-width="1"/>
+  <!-- Handwriting lines -->
+  <path d="M88,60 Q120,58 165,60" stroke="#221" stroke-width="1.5" fill="none"/>
+  <path d="M88,75 Q125,73 160,75" stroke="#221" stroke-width="1.5" fill="none"/>
+  <!-- Key excerpt in red ink -->
+  <text x="90" y="93" font-family="'Crimson Text', serif" font-size="9" fill="#8b3a3a" font-weight="bold">"V.G. cannot be trusted"</text>
+  <path d="M88,110 Q120,108 150,110" stroke="#221" stroke-width="1.5" fill="none"/>
+  </g>
+
+  <!-- Tag & Clue Label -->
+  <rect x="15" y="152" width="230" height="35" fill="rgba(10,8,7,0.92)" stroke="url(#goldRim)" stroke-width="1"/>
+  <text x="25" y="167" font-family="'Playfair Display', serif" font-size="11" font-weight="bold" fill="#dfbf67">#9: TORN DIARY ENTRY</text>
+  <text x="25" y="180" font-family="'Special Elite', monospace" font-size="8" fill="#a09880" letter-spacing="1">HIGH • GRAVES ACCUSED BY RICHARD</text>
+</svg>

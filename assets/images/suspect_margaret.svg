@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" width="320" height="380">
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#2a221b"/>
+      <stop offset="50%" stop-color="#14110e"/>
+      <stop offset="100%" stop-color="#080706"/>
+    </radialGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="50%" stop-color="#5a451b"/>
+      <stop offset="100%" stop-color="#c9a84c"/>
+    </linearGradient>
+    <filter id="noirGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="320" height="380" fill="url(#vignette)"/>
+  
+  <!-- Outer Vintage Frame -->
+  <rect x="8" y="8" width="304" height="364" fill="none" stroke="url(#goldBorder)" stroke-width="2"/>
+  <rect x="14" y="14" width="292" height="352" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="4,2"/>
+
+  <!-- Character Artwork -->
+  <g filter="url(#noirGlow)">
+      <!-- Trenchcoat Body -->
+  <path d="M65,315 C80,240 100,210 120,200 L120,180 L200,180 L200,200 C220,210 240,240 255,315 Z" fill="#4a3e2c"/>
+  <!-- Head -->
+  <path d="M125,130 C125,170 140,190 160,190 C180,190 195,170 195,130 C195,100 180,90 160,90 C140,90 125,100 125,130 Z" fill="#dfc4a6"/>
+  <!-- 1940s Reporter Fedora Hat -->
+  <ellipse cx="160" cy="92" rx="72" ry="22" fill="#2b2319" stroke="#c9a84c" stroke-width="1"/>
+  <path d="M120,92 C120,60 135,45 160,45 C185,45 200,60 200,92 Z" fill="#382e22"/>
+  <!-- Press Card in Hatband -->
+  <rect x="180" y="75" width="14" height="20" fill="#f5e6c8" transform="rotate(12, 180, 75)" stroke="#333" stroke-width="0.5"/>
+  <text x="182" y="87" font-size="5" font-family="monospace" fill="#111" transform="rotate(12, 180, 75)">PRESS</text>
+  <!-- Sharp Eyes & Determined Look -->
+  <ellipse cx="145" cy="132" rx="4" ry="2.2" fill="#1f1812"/>
+  <ellipse cx="175" cy="132" rx="4" ry="2.2" fill="#1f1812"/>
+  <path d="M152,164 Q160,168 168,164" stroke="#8b3a3a" stroke-width="2.5" fill="none"/>
+  <!-- Trenchcoat Collar -->
+  <polygon points="120,195 160,245 140,315 85,315" fill="#3b3121" stroke="#221" stroke-width="1"/>
+  <polygon points="200,195 160,245 180,315 235,315" fill="#342b1d" stroke="#221" stroke-width="1"/>
+  </g>
+
+  <!-- Bottom Name Plate -->
+  <rect x="20" y="315" width="280" height="46" fill="rgba(10,9,8,0.92)" stroke="url(#goldBorder)" stroke-width="1.5"/>
+  <text x="160" y="335" font-family="'Playfair Display', Georgia, serif" font-size="14" font-weight="bold" fill="#dfbf67" text-anchor="middle" letter-spacing="2">MARGARET HAYES</text>
+  <text x="160" y="351" font-family="'Special Elite', monospace" font-size="9.5" fill="#a09880" text-anchor="middle" letter-spacing="1.5">JOURNALIST • EXPOSÉ</text>
+  
+  <!-- Corner Ornaments -->
+  <circle cx="14" cy="14" r="3" fill="#c9a84c"/>
+  <circle cx="306" cy="14" r="3" fill="#c9a84c"/>
+  <circle cx="14" cy="366" r="3" fill="#c9a84c"/>
+  <circle cx="306" cy="366" r="3" fill="#c9a84c"/>
+</svg>

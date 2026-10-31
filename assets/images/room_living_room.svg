@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" width="480" height="240">
+  <defs>
+    <radialGradient id="roomGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#2a2016"/>
+      <stop offset="70%" stop-color="#120e0a"/>
+      <stop offset="100%" stop-color="#050403"/>
+    </radialGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#554015"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wall Background -->
+  <rect width="480" height="240" fill="url(#roomGlow)"/>
+  
+  <!-- Architectural Perspective Lines -->
+  <line x1="0" y1="0" x2="100" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="1.5"/>
+  <line x1="480" y1="0" x2="380" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="1.5"/>
+  <line x1="0" y1="240" x2="100" y2="180" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+  <line x1="480" y1="240" x2="380" y2="180" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+  
+  <!-- Interior Room Drawing -->
+    <!-- Tall Arched Rainy Windows -->
+  <rect x="180" y="30" width="120" height="110" fill="#0d141e" stroke="#c9a84c" stroke-width="1.5" rx="20"/>
+  <line x1="240" y1="30" x2="240" y2="140" stroke="#c9a84c" stroke-width="1"/>
+  <line x1="180" y1="85" x2="300" y2="85" stroke="#c9a84c" stroke-width="1"/>
+  <!-- Rain streaks on glass -->
+  <line x1="200" y1="40" x2="195" y2="60" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <line x1="260" y1="70" x2="255" y2="95" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <!-- Fireplace Hearth -->
+  <rect x="50" y="80" width="90" height="95" fill="#1b120c" stroke="#5a3d24" stroke-width="2"/>
+  <path d="M65,155 Q95,120 125,155 Z" fill="#b3541e"/>
+  <!-- Chesterfield Sofa -->
+  <rect x="330" y="115" width="110" height="60" rx="8" fill="#1f140f" stroke="#c9a84c" stroke-width="1"/>
+  <!-- Coffee Table & Ashtray -->
+  <ellipse cx="240" cy="165" rx="55" ry="16" fill="#15100c" stroke="#443" stroke-width="1"/>
+  <circle cx="235" cy="163" r="6" fill="#c9a84c"/>
+
+  <!-- Noir Shadow Vignette Frame -->
+  <rect x="6" y="6" width="468" height="228" fill="none" stroke="url(#goldStroke)" stroke-width="1.5"/>
+  <rect x="10" y="10" width="460" height="220" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- Room Name Overlay Banner -->
+  <rect x="25" y="185" width="430" height="42" fill="rgba(8,7,6,0.88)" stroke="url(#goldStroke)" stroke-width="1"/>
+  <text x="45" y="206" font-family="'Playfair Display', Georgia, serif" font-size="15" font-weight="bold" fill="#dfbf67" letter-spacing="2">LIVING ROOM</text>
+  <text x="45" y="220" font-family="'Special Elite', monospace" font-size="9" fill="#a09880" letter-spacing="1.5">PARLOR & HEARTH • GUEST SOCIAL QUARTERS</text>
+</svg>

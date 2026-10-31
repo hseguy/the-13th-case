@@ -37,19 +37,19 @@ const Game = {
 
 // Evidence Definitions
 const EVIDENCE_REGISTRY = {
-    1: { id: 1, name: "Stopped Clock", location: "Private Study", importance: "critical", desc: "The grandfather clock stopped at exactly 11:13 PM. The escapement gear was jammed with a small brass pin, indicating the time was staged." },
-    2: { id: 2, name: "Blood-Stained Letter", location: "Private Study", importance: "high", desc: "A partially burned letter with dark blood spots addressed to Victor Graves regarding the immediate revocation of his legal power of attorney." },
-    3: { id: 3, name: "Missing Document Cabinet", location: "Private Study", importance: "critical", desc: "An open, ransacked document safe. The lock shows no scratch marks—opened with a duplicate key." },
-    4: { id: 4, name: "Broken Glass", location: "Private Study", importance: "low", desc: "Shattered crystal tumbler with traces of bourbon, indicating a sudden scuffle near the desk." },
-    5: { id: 5, name: "Torn Photograph", location: "Living Room", importance: "medium", desc: "A framed dinner photo from which lawyer Victor Graves' face was meticulously cut and excised." },
-    6: { id: 6, name: "Wine Glass with Residue", location: "Living Room", importance: "medium", desc: "A wine glass containing sedative chloral hydrate residue, likely intended to incapacitate the victim." },
-    7: { id: 7, name: "Poison Bottle", location: "Kitchen", importance: "high", desc: "A vial of arsenic placed conspicuously behind baking soda in the pantry—an obvious attempt to frame Eleanor Blackwood." },
-    8: { id: 8, name: "Secret Passage Map", location: "Library", importance: "critical", desc: "An architectural blueprint showing a hidden corridor connecting the cellar directly into the private study behind the bookcase." },
-    9: { id: 9, name: "Torn Diary Page", location: "Library", importance: "high", desc: "Richard's diary page: 'V.G. cannot be trusted. Tomorrow the state auditors arrive. One way or another, this deception ends.'" },
-    10: { id: 10, name: "Hidden Financial Records", location: "Secret Basement", importance: "critical", desc: "Secret dual ledgers revealing that Victor Graves embezzled over $450,000 from the Blackwood estate." },
-    11: { id: 11, name: "Old Photograph", location: "Secret Basement", importance: "medium", desc: "An old deed signing photo where Richard Blackwood's signature was forged by traced ink transfer." },
-    12: { id: 12, name: "Modified Will", location: "Secret Basement", importance: "critical", desc: "A freshly forged last will leaving full executive custody of the Blackwood estate to Victor Graves." },
-    13: { id: 13, name: "Cigarette Remains", location: "Living Room", importance: "medium", desc: "Rare Sobranie Turkish cigarette butts. Only one person present that evening smokes this bespoke brand: Victor Graves." }
+    1: { id: 1, name: "Stopped Clock", location: "Private Study", importance: "critical", image: "assets/images/evidence_1.svg", desc: "The grandfather clock stopped at exactly 11:13 PM. The escapement gear was jammed with a small brass pin, indicating the time was staged." },
+    2: { id: 2, name: "Blood-Stained Letter", location: "Private Study", importance: "high", image: "assets/images/evidence_2.svg", desc: "A partially burned letter with dark blood spots addressed to Victor Graves regarding the immediate revocation of his legal power of attorney." },
+    3: { id: 3, name: "Missing Document Cabinet", location: "Private Study", importance: "critical", image: "assets/images/evidence_3.svg", desc: "An open, ransacked document safe. The lock shows no scratch marks—opened with a duplicate key." },
+    4: { id: 4, name: "Broken Glass", location: "Private Study", importance: "low", image: "assets/images/evidence_4.svg", desc: "Shattered crystal tumbler with traces of bourbon, indicating a sudden scuffle near the desk." },
+    5: { id: 5, name: "Torn Photograph", location: "Living Room", importance: "medium", image: "assets/images/evidence_5.svg", desc: "A framed dinner photo from which lawyer Victor Graves' face was meticulously cut and excised." },
+    6: { id: 6, name: "Wine Glass with Residue", location: "Living Room", importance: "medium", image: "assets/images/evidence_6.svg", desc: "A wine glass containing sedative chloral hydrate residue, likely intended to incapacitate the victim." },
+    7: { id: 7, name: "Poison Bottle", location: "Kitchen", importance: "high", image: "assets/images/evidence_7.svg", desc: "A vial of arsenic placed conspicuously behind baking soda in the pantry—an obvious attempt to frame Eleanor Blackwood." },
+    8: { id: 8, name: "Secret Passage Map", location: "Library", importance: "critical", image: "assets/images/evidence_8.svg", desc: "An architectural blueprint showing a hidden corridor connecting the cellar directly into the private study behind the bookcase." },
+    9: { id: 9, name: "Torn Diary Page", location: "Library", importance: "high", image: "assets/images/evidence_9.svg", desc: "Richard's diary page: 'V.G. cannot be trusted. Tomorrow the state auditors arrive. One way or another, this deception ends.'" },
+    10: { id: 10, name: "Hidden Financial Records", location: "Secret Basement", importance: "critical", image: "assets/images/evidence_10.svg", desc: "Secret dual ledgers revealing that Victor Graves embezzled over $450,000 from the Blackwood estate." },
+    11: { id: 11, name: "Old Photograph", location: "Secret Basement", importance: "medium", image: "assets/images/evidence_11.svg", desc: "An old deed signing photo where Richard Blackwood's signature was forged by traced ink transfer." },
+    12: { id: 12, name: "Modified Will", location: "Secret Basement", importance: "critical", image: "assets/images/evidence_12.svg", desc: "A freshly forged last will leaving full executive custody of the Blackwood estate to Victor Graves." },
+    13: { id: 13, name: "Cigarette Remains", location: "Living Room", importance: "medium", image: "assets/images/evidence_13.svg", desc: "Rare Sobranie Turkish cigarette butts. Only one person present that evening smokes this bespoke brand: Victor Graves." }
 };
 
 // Mansion Room Objects
@@ -58,6 +58,7 @@ const ROOM_DATA = {
         id: 'study',
         name: 'Private Study',
         icon: '🔍',
+        image: 'assets/images/room_study.svg',
         desc: 'The scene of the crime. Richard Blackwood was found behind his mahogany desk. The single door was locked from the inside.',
         objects: [
             { id: 'study_clock', name: 'Stopped Clock', icon: '🕰️', evidenceId: 1, puzzle: true, desc: 'A towering grandfather clock frozen at 11:13 PM. The mechanism has been tampered with. Decipher the lockwork code to examine it.' },
@@ -71,6 +72,7 @@ const ROOM_DATA = {
         id: 'living_room',
         name: 'Living Room',
         icon: '🛋️',
+        image: 'assets/images/room_living_room.svg',
         desc: 'Where the guests and household gathered prior to midnight. Rain lashes against the tall French bay windows.',
         objects: [
             { id: 'lr_photo', name: 'Torn Photograph', icon: '🖼️', evidenceId: 5, puzzle: false, desc: 'A silver frame knocked flat on the side table. The photograph has been deliberately sliced.' },
@@ -83,6 +85,7 @@ const ROOM_DATA = {
         id: 'kitchen',
         name: 'Kitchen & Pantry',
         icon: '🍳',
+        image: 'assets/images/room_kitchen.svg',
         desc: 'A cavernous tiled kitchen. The staff had prepared evening tea and cocktails before retiring.',
         objects: [
             { id: 'k_poison', name: 'Poison Bottle', icon: '☠️', evidenceId: 7, puzzle: false, desc: 'A bottle of rat poison placed right behind the sugar canisters, almost as if someone wanted it found.' },
@@ -94,6 +97,7 @@ const ROOM_DATA = {
         id: 'library',
         name: 'Grand Library',
         icon: '📚',
+        image: 'assets/images/room_library.svg',
         desc: 'Floor-to-ceiling oak bookshelves. Richard often retreated here for private research and negotiations.',
         objects: [
             { id: 'lib_bookshelf', name: 'Secret Bookshelf Compartment', icon: '📖', evidenceId: 8, puzzle: true, desc: 'A hollowed leather encyclopedia conceals a mechanical brass dial. Solve the cryptogram to slide the panel.' },
@@ -105,6 +109,7 @@ const ROOM_DATA = {
         id: 'basement',
         name: 'Secret Basement',
         icon: '🚪',
+        image: 'assets/images/room_basement.svg',
         desc: 'A subterranean wine cellar and vault beneath the manor. Connected via the secret passage.',
         locked: true,
         objects: [
@@ -123,6 +128,7 @@ const SUSPECTS_DATA = {
         name: 'Eleanor Blackwood',
         role: "Victim's Wife",
         avatar: '👩',
+        image: 'assets/images/suspect_eleanor.svg',
         motive: 'Inheritance & Marital Estrangement',
         bio: 'Elegant and poised, Eleanor married Richard twelve years ago. Their marriage had grown distant, but she maintains her innocence.',
         questions: [
@@ -138,6 +144,7 @@ const SUSPECTS_DATA = {
         name: 'Thomas Reed',
         role: 'Business Partner',
         avatar: '👨‍💼',
+        image: 'assets/images/suspect_thomas.svg',
         motive: 'Financial Disputes & Debt Pressure',
         bio: 'Co-owner of Blackwood Shipping & Rail. Known for aggressive investments and volatile arguments with Richard.',
         questions: [
@@ -153,6 +160,7 @@ const SUSPECTS_DATA = {
         name: 'Henry Collins',
         role: 'Head Butler',
         avatar: '🤵',
+        image: 'assets/images/suspect_henry.svg',
         motive: 'Blackmail & Past Transgressions',
         bio: 'Has managed Blackwood Manor for over two decades. Discreet, observant, and aware of every hidden passage.',
         questions: [
@@ -168,6 +176,7 @@ const SUSPECTS_DATA = {
         name: 'Margaret Hayes',
         role: 'Investigative Journalist',
         avatar: '🕵️‍♀️',
+        image: 'assets/images/suspect_margaret.svg',
         motive: 'Revenge & Exposé Scoop',
         bio: 'Hard-hitting press reporter for the Blackwood City Daily. Richard had promised her an exclusive whistleblower interview.',
         questions: [
@@ -183,6 +192,7 @@ const SUSPECTS_DATA = {
         name: 'Victor Graves',
         role: 'Personal Lawyer (The Murderer)',
         avatar: '⚖️',
+        image: 'assets/images/suspect_victor.svg',
         motive: 'Concealment of Embezzlement & Altered Will',
         bio: 'Suave, calculative, and Richard\'s closest legal counselor for fifteen years. Handles all Blackwood family trusts.',
         questions: [
@@ -515,16 +525,18 @@ function renderMansionMap() {
         const card = document.createElement('div');
         card.className = `location-card ${isLocked ? 'locked' : ''}`;
         card.innerHTML = `
-            <div class="location-header">
-                <span class="location-icon">${room.icon}</span>
-                <span class="location-status ${statusClass}">${statusText}</span>
+            <div class="location-banner-wrap">
+                <img src="${room.image}" alt="${room.name}" class="location-banner-img" />
+                <span class="location-status ${statusClass}" style="position: absolute; top: 12px; right: 12px; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.8);">${statusText}</span>
             </div>
-            <div>
-                <h3 class="location-name">${room.name}</h3>
-                <p class="location-desc">${room.desc}</p>
-            </div>
-            <div style="margin-top: 1.5rem;">
-                <button class="btn btn-small" ${isLocked ? 'disabled' : ''}>ENTER ROOM →</button>
+            <div class="location-content">
+                <div>
+                    <h3 class="location-name">${room.name}</h3>
+                    <p class="location-desc">${room.desc}</p>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn btn-small" ${isLocked ? 'disabled' : ''}>ENTER ROOM →</button>
+                </div>
             </div>
         `;
 
@@ -547,10 +559,16 @@ function openRoomInvestigation(roomId) {
     const room = ROOM_DATA[roomId];
     document.getElementById('room-title').textContent = room.name.toUpperCase();
     
+    let descHtml = `
+        <div class="room-hero-banner">
+            <img src="${room.image}" alt="${room.name}" class="room-hero-img">
+        </div>
+    `;
+
     if (roomId === 'study') {
-        document.getElementById('room-desc').innerHTML = `
-            <div style="display: flex; gap: 1.25rem; align-items: center; justify-content: center; margin: 1rem 0; flex-wrap: wrap;">
-                <img src="assets/images/richard_blackwood.jpg" alt="Richard Blackwood" style="width: 70px; height: 90px; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 0 15px rgba(201, 168, 76, 0.3);">
+        descHtml += `
+            <div style="display: flex; gap: 1.25rem; align-items: center; justify-content: center; margin: 1rem auto; max-width: 760px; background: rgba(14,12,10,0.85); border: 1px solid var(--border-gold); padding: 1rem; flex-wrap: wrap;">
+                <img src="assets/images/richard_blackwood.jpg" alt="Richard Blackwood" style="width: 75px; height: 95px; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 0 15px rgba(201, 168, 76, 0.3);">
                 <div style="text-align: left; max-width: 520px;">
                     <strong style="color: var(--gold); font-family: var(--font-mono); font-size: 0.85rem;">CRIME SCENE &bull; VICTIM: RICHARD BLACKWOOD</strong>
                     <p style="margin-top: 0.25rem; font-size: 0.95rem; color: var(--cream-muted);">${room.desc}</p>
@@ -558,8 +576,9 @@ function openRoomInvestigation(roomId) {
             </div>
         `;
     } else {
-        document.getElementById('room-desc').textContent = room.desc;
+        descHtml += `<p style="max-width: 760px; margin: 0 auto; color: var(--text-secondary); line-height: 1.7;">${room.desc}</p>`;
     }
+    document.getElementById('room-desc').innerHTML = descHtml;
 
     const objectsGrid = document.getElementById('room-objects-grid');
     objectsGrid.innerHTML = '';
@@ -567,11 +586,12 @@ function openRoomInvestigation(roomId) {
     room.objects.forEach(obj => {
         const isExamined = Game.objectsExamined.includes(obj.id);
         const hasEvidence = obj.evidenceId && Game.evidenceCollected.includes(obj.evidenceId);
+        const evItem = obj.evidenceId ? EVIDENCE_REGISTRY[obj.evidenceId] : null;
 
         const card = document.createElement('div');
         card.className = `object-card ${isExamined ? 'examined' : ''}`;
         card.innerHTML = `
-            <span class="object-icon">${obj.icon}</span>
+            ${evItem ? `<div style="text-align: center; margin-bottom: 0.75rem;"><img src="${evItem.image}" alt="${obj.name}" style="width: 54px; height: 54px; object-fit: contain; border: 1px solid var(--border-gold); border-radius: 2px; background: #0c0a08; padding: 2px;"></div>` : `<span class="object-icon">${obj.icon}</span>`}
             <h4 class="object-name">${obj.name}</h4>
             <p class="object-hint">${hasEvidence ? '✓ EVIDENCE COLLECTED' : (obj.puzzle ? '🔐 SECURE CIPHER' : (isExamined ? 'EXAMINED' : 'CLICK TO EXAMINE'))}</p>
         `;
@@ -603,17 +623,21 @@ function investigateObject(obj) {
     // If it yields standard evidence directly
     if (obj.evidenceId && !Game.evidenceCollected.includes(obj.evidenceId)) {
         collectEvidence(obj.evidenceId);
+        const item = EVIDENCE_REGISTRY[obj.evidenceId];
         showModal(
             `EVIDENCE SECURED: ${obj.name}`,
-            `<p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">${obj.desc}</p>
+            `<div style="text-align: center; margin-bottom: 1rem;">
+                <img src="${item.image}" alt="${item.name}" class="evidence-modal-img" />
+             </div>
+             <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">${obj.desc}</p>
              <div class="case-facts-grid" style="margin: 0;">
                 <div class="case-fact-item">
                     <h4>CLUE LOGGED</h4>
-                    <p>${EVIDENCE_REGISTRY[obj.evidenceId].name}</p>
+                    <p>${item.name}</p>
                 </div>
                 <div class="case-fact-item">
                     <h4>LOCATION</h4>
-                    <p>${EVIDENCE_REGISTRY[obj.evidenceId].location}</p>
+                    <p>${item.location}</p>
                 </div>
              </div>`,
             [{ text: "ADD TO CASE FILE", class: "btn-primary", onClick: closeModal }]
@@ -842,10 +866,15 @@ function renderEvidenceInventory() {
         const card = document.createElement('div');
         card.className = 'evidence-card';
         card.innerHTML = `
-            <span class="evidence-importance-tag tag-${item.importance}">${item.importance}</span>
-            <h3 class="evidence-title">${item.name}</h3>
-            <p class="evidence-location">📍 ${item.location}</p>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">${item.desc}</p>
+            <div class="evidence-card-img-wrap">
+                <img src="${item.image}" alt="${item.name}" class="evidence-card-img" />
+                <span class="evidence-importance-tag tag-${item.importance}">${item.importance}</span>
+            </div>
+            <div class="evidence-card-body">
+                <h3 class="evidence-title">#${item.id}: ${item.name}</h3>
+                <p class="evidence-location">📍 ${item.location}</p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-top: 0.5rem;">${item.desc}</p>
+            </div>
         `;
         grid.appendChild(card);
     });
@@ -861,12 +890,16 @@ function selectEvidenceForSlot(slotNum) {
         return;
     }
 
-    let optionsHtml = '<div style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 340px; overflow-y: auto;">';
+    let optionsHtml = '<div style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 380px; overflow-y: auto;">';
     Game.evidenceCollected.forEach(id => {
         const item = EVIDENCE_REGISTRY[id];
         optionsHtml += `
-            <button class="btn btn-small" style="text-align: left; padding: 10px 14px;" onclick="setBoardSlot(${slotNum}, ${id})">
-                #${id} — ${item.name} (${item.location})
+            <button class="btn btn-small board-slot-pick-btn" onclick="setBoardSlot(${slotNum}, ${id})">
+                <img src="${item.image}" alt="${item.name}" class="evidence-thumb-small" />
+                <div style="flex-grow: 1;">
+                    <div style="font-weight: bold; color: var(--gold-light);">#${id} — ${item.name}</div>
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">📍 ${item.location} &bull; ${item.importance.toUpperCase()}</small>
+                </div>
             </button>
         `;
     });
@@ -892,7 +925,13 @@ function updateBoardSlotsUI() {
         if (Game.boardSlot1) {
             const item = EVIDENCE_REGISTRY[Game.boardSlot1];
             slot1El.className = 'board-slot filled';
-            slot1El.innerHTML = `<strong>#${item.id}: ${item.name}</strong><small style="color: var(--text-muted); margin-top: 0.5rem;">${item.location}</small>`;
+            slot1El.innerHTML = `
+                <div class="board-slot-content">
+                    <img src="${item.image}" alt="${item.name}" class="board-slot-img" />
+                    <strong>#${item.id}: ${item.name}</strong>
+                    <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">📍 ${item.location}</small>
+                </div>
+            `;
         } else {
             slot1El.className = 'board-slot';
             slot1El.innerHTML = `<span>+ SELECT CLUE #1</span>`;
@@ -903,7 +942,13 @@ function updateBoardSlotsUI() {
         if (Game.boardSlot2) {
             const item = EVIDENCE_REGISTRY[Game.boardSlot2];
             slot2El.className = 'board-slot filled';
-            slot2El.innerHTML = `<strong>#${item.id}: ${item.name}</strong><small style="color: var(--text-muted); margin-top: 0.5rem;">${item.location}</small>`;
+            slot2El.innerHTML = `
+                <div class="board-slot-content">
+                    <img src="${item.image}" alt="${item.name}" class="board-slot-img" />
+                    <strong>#${item.id}: ${item.name}</strong>
+                    <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">📍 ${item.location}</small>
+                </div>
+            `;
         } else {
             slot2El.className = 'board-slot';
             slot2El.innerHTML = `<span>+ SELECT CLUE #2</span>`;
@@ -968,10 +1013,12 @@ function renderSuspectsScreen() {
         const card = document.createElement('div');
         card.className = 'suspect-card';
         card.innerHTML = `
-            <div class="suspect-avatar">${s.avatar}</div>
+            <div class="suspect-portrait-frame">
+                <img src="${s.image}" alt="${s.name}" class="suspect-avatar-img" />
+            </div>
             <h3 class="suspect-name">${s.name}</h3>
             <p class="suspect-role">${s.role}</p>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">${s.bio}</p>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem; min-height: 50px;">${s.bio}</p>
             <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); margin-bottom: 1rem;">
                 QUESTIONS ASKED: ${askedCount} / 4
             </div>
@@ -994,7 +1041,11 @@ function openInterrogation(suspectKey) {
     document.getElementById('interrogate-name').textContent = s.name.toUpperCase();
     document.getElementById('interrogate-role').textContent = s.role.toUpperCase();
     document.getElementById('interrogate-motive').textContent = s.motive;
-    document.getElementById('interrogate-avatar').textContent = s.avatar;
+    
+    const avatarEl = document.getElementById('interrogate-avatar');
+    if (avatarEl) {
+        avatarEl.innerHTML = `<img src="${s.image}" alt="${s.name}" class="interrogation-avatar-img">`;
+    }
 
     const dialogueText = document.getElementById('interrogate-dialogue-text');
     if (dialogueText) {
@@ -1082,10 +1133,50 @@ function openAccusationScreen() {
     } else {
         if (warnEl) warnEl.style.display = 'none';
         if (formEl) formEl.style.display = 'block';
+        renderAccuseSuspectPicker();
         populateEvidenceChecklist();
     }
 
     showScreen('screen-accusation');
+}
+
+function renderAccuseSuspectPicker() {
+    const pickerEl = document.getElementById('accuse-suspects-grid');
+    const selectEl = document.getElementById('accuse-suspect-select');
+    if (!pickerEl) return;
+    pickerEl.innerHTML = '';
+
+    Object.keys(SUSPECTS_DATA).forEach(key => {
+        const s = SUSPECTS_DATA[key];
+        const isSelected = selectEl && parseInt(selectEl.value) === s.numId;
+
+        const tile = document.createElement('div');
+        tile.className = `accuse-suspect-tile ${isSelected ? 'selected' : ''}`;
+        tile.id = `accuse-tile-${s.numId}`;
+        tile.innerHTML = `
+            <img src="${s.image}" alt="${s.name}" class="accuse-suspect-thumb" />
+            <strong style="display:block; font-size: 0.85rem; color: var(--gold-light);">${s.name}</strong>
+            <small style="display:block; font-size: 0.7rem; color: var(--text-muted);">${s.role}</small>
+        `;
+
+        tile.addEventListener('click', () => {
+            if (selectEl) selectEl.value = s.numId;
+            document.querySelectorAll('.accuse-suspect-tile').forEach(t => t.classList.remove('selected'));
+            tile.classList.add('selected');
+            NoirAudio.playClick();
+        });
+
+        pickerEl.appendChild(tile);
+    });
+
+    if (selectEl) {
+        selectEl.onchange = () => {
+            const val = parseInt(selectEl.value);
+            document.querySelectorAll('.accuse-suspect-tile').forEach(t => t.classList.remove('selected'));
+            const matching = document.getElementById(`accuse-tile-${val}`);
+            if (matching) matching.classList.add('selected');
+        };
+    }
 }
 
 function populateEvidenceChecklist() {
@@ -1097,8 +1188,13 @@ function populateEvidenceChecklist() {
         const item = EVIDENCE_REGISTRY[id];
         const label = document.createElement('label');
         label.className = 'check-item';
+        label.style.display = 'flex';
+        label.style.alignItems = 'center';
+        label.style.gap = '0.85rem';
+        label.style.cursor = 'pointer';
         label.innerHTML = `
             <input type="checkbox" name="accuse_evidence" value="${id}">
+            <img src="${item.image}" alt="${item.name}" class="evidence-thumb-small" />
             <span><strong>#${id}: ${item.name}</strong> (${item.location})</span>
         `;
         listEl.appendChild(label);
@@ -1185,6 +1281,25 @@ function renderEndingScreen(ending) {
     document.getElementById('ending-score').textContent = ending.final_score;
     document.getElementById('ending-evidence').textContent = `${ending.evidence_count} / 13`;
     document.getElementById('ending-puzzles').textContent = ending.puzzles_solved;
+
+    const portraitContainer = document.getElementById('ending-portrait-container');
+    if (portraitContainer) {
+        if (ending.ending_type === 'CASE_FAILED') {
+            portraitContainer.innerHTML = `
+                <div class="ending-culprit-card">
+                    <img src="assets/images/richard_blackwood.jpg" alt="Cold Case" class="ending-culprit-img">
+                    <span class="stamp-overlay stamp-unsolved">COLD CASE &bull; UNSOLVED</span>
+                </div>
+            `;
+        } else {
+            portraitContainer.innerHTML = `
+                <div class="ending-culprit-card">
+                    <img src="assets/images/suspect_victor.svg" alt="Victor Graves Guilty" class="ending-culprit-img">
+                    <span class="stamp-overlay stamp-guilty">GUILTY &bull; CONVICTED</span>
+                </div>
+            `;
+        }
+    }
 
     if (ending.ending_type === 'CASE_FAILED') {
         NoirAudio.playErrorBuzz();

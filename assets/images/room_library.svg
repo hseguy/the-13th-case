@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" width="480" height="240">
+  <defs>
+    <radialGradient id="roomGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#2a2016"/>
+      <stop offset="70%" stop-color="#120e0a"/>
+      <stop offset="100%" stop-color="#050403"/>
+    </radialGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#554015"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wall Background -->
+  <rect width="480" height="240" fill="url(#roomGlow)"/>
+  
+  <!-- Architectural Perspective Lines -->
+  <line x1="0" y1="0" x2="100" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="1.5"/>
+  <line x1="480" y1="0" x2="380" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="1.5"/>
+  <line x1="0" y1="240" x2="100" y2="180" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+  <line x1="480" y1="240" x2="380" y2="180" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+  
+  <!-- Interior Room Drawing -->
+    <!-- Floor to Ceiling Bookshelves -->
+  <rect x="50" y="25" width="100" height="155" fill="#1c1209" stroke="#c9a84c" stroke-width="1.5"/>
+  <rect x="330" y="25" width="100" height="155" fill="#1c1209" stroke="#c9a84c" stroke-width="1.5"/>
+  <!-- Book Spines -->
+  <line x1="50" y1="65" x2="150" y2="65" stroke="#5a3d24" stroke-width="3"/>
+  <line x1="50" y1="105" x2="150" y2="105" stroke="#5a3d24" stroke-width="3"/>
+  <line x1="50" y1="145" x2="150" y2="145" stroke="#5a3d24" stroke-width="3"/>
+  <line x1="330" y1="65" x2="430" y2="65" stroke="#5a3d24" stroke-width="3"/>
+  <line x1="330" y1="105" x2="430" y2="105" stroke="#5a3d24" stroke-width="3"/>
+  <line x1="330" y1="145" x2="430" y2="145" stroke="#5a3d24" stroke-width="3"/>
+  <!-- Secret False Bookcase Panel Doorway Ajar -->
+  <polygon points="190,35 270,35 290,175 170,175" fill="#100b06" stroke="#c9a84c" stroke-width="1"/>
+  <rect x="200" y="45" width="65" height="125" fill="#050302"/>
+  <text x="232" y="115" fill="#c9a84c" font-size="10" font-family="monospace" text-anchor="middle">SECRET PASSAGE</text>
+
+  <!-- Noir Shadow Vignette Frame -->
+  <rect x="6" y="6" width="468" height="228" fill="none" stroke="url(#goldStroke)" stroke-width="1.5"/>
+  <rect x="10" y="10" width="460" height="220" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- Room Name Overlay Banner -->
+  <rect x="25" y="185" width="430" height="42" fill="rgba(8,7,6,0.88)" stroke="url(#goldStroke)" stroke-width="1"/>
+  <text x="45" y="206" font-family="'Playfair Display', Georgia, serif" font-size="15" font-weight="bold" fill="#dfbf67" letter-spacing="2">GRAND LIBRARY</text>
+  <text x="45" y="220" font-family="'Special Elite', monospace" font-size="9" fill="#a09880" letter-spacing="1.5">SECRET PASSAGE ACCESS • TAX DIGESTS</text>
+</svg>

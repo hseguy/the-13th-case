@@ -388,6 +388,7 @@ require_once __DIR__ . '/config/config.php';
             <div id="accusation-form-card" class="accusation-form" style="display: none;">
                 <div class="form-group">
                     <label class="form-label">1. WHO COMMITTED THE MURDER OF RICHARD BLACKWOOD?</label>
+                    <div id="accuse-suspects-grid" class="accuse-suspects-picker" style="margin-bottom: 1rem;"></div>
                     <select id="accuse-suspect-select" class="form-select">
                         <option value="">-- SELECT THE MURDERER --</option>
                         <option value="1">Eleanor Blackwood (Victim's Wife)</option>
@@ -436,6 +437,8 @@ require_once __DIR__ . '/config/config.php';
                 <span class="badge" id="ending-badge" style="font-size: 0.85rem; padding: 4px 14px; margin-bottom: 1.5rem;">CASE OUTCOME</span>
 
                 <h1 class="newspaper-title" id="ending-headline">CASE OUTCOME HEADLINE</h1>
+
+                <div id="ending-portrait-container" style="text-align: center; margin: 1.5rem 0;"></div>
 
                 <p class="newspaper-body" id="ending-body">
                     Story resolution text goes here...

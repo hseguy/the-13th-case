@@ -1263,3 +1263,273 @@ h4 {
     border-color: var(--gold-light);
     box-shadow: 0 0 15px var(--gold-glow);
 }
+
+/* ==========================================================================
+   IMAGE & ARTWORK ENHANCEMENTS (Suspects, Rooms, Clues, Endings)
+   ========================================================================== */
+
+/* Room Banners & Map Cards */
+.location-card {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.location-banner-wrap {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background: #0d0c0a;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.location-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.location-card:hover .location-banner-img {
+    transform: scale(1.05);
+}
+
+.location-content {
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.room-hero-banner {
+    max-width: 760px;
+    margin: 1rem auto 1.5rem;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.room-hero-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Evidence Cards & Details */
+.evidence-card {
+    padding: 0 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.evidence-card-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background: #110e0c;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.evidence-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.evidence-card:hover .evidence-card-img {
+    transform: scale(1.04);
+}
+
+.evidence-card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.evidence-modal-img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+    margin: 0.5rem auto 1.25rem;
+    display: block;
+}
+
+.evidence-thumb-small {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    background: #110e0c;
+    flex-shrink: 0;
+}
+
+/* Suspect Portraits */
+.suspect-card {
+    padding: 1.75rem 1.5rem;
+}
+
+.suspect-portrait-frame {
+    width: 135px;
+    height: 160px;
+    margin: 0 auto 1.25rem;
+    padding: 4px;
+    background: #12100e;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.25);
+    border-radius: 3px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.suspect-card:hover .suspect-portrait-frame {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 25px rgba(201, 168, 76, 0.5);
+}
+
+.suspect-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.interrogation-avatar {
+    width: 160px !important;
+    height: 190px !important;
+    border-radius: 4px !important;
+    padding: 5px !important;
+    background: #100e0b !important;
+    border: 2px solid var(--gold) !important;
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.35) !important;
+    margin: 0 auto 1.5rem !important;
+    overflow: hidden !important;
+}
+
+.interrogation-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Board Slot Cards */
+.board-slot-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.board-slot-img {
+    width: 100px;
+    height: 75px;
+    object-fit: contain;
+    border: 1px solid var(--gold);
+    margin-bottom: 0.5rem;
+    background: #110e0c;
+}
+
+.board-slot-pick-btn {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    padding: 8px 12px !important;
+}
+
+/* Ending Screen Culprit Card */
+.ending-culprit-card {
+    display: inline-block;
+    position: relative;
+    margin: 1rem auto 1.5rem;
+    padding: 6px;
+    background: #12100e;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+.ending-culprit-img {
+    width: 160px;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+}
+
+.stamp-overlay {
+    position: absolute;
+    bottom: 18px;
+    right: 10px;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border: 2px solid #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+.stamp-guilty {
+    background: var(--red);
+    transform: rotate(-8deg);
+}
+
+.stamp-unsolved {
+    background: #444;
+    transform: rotate(6deg);
+}
+
+/* Accusation Suspect Picker Grid */
+.accuse-suspects-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.accuse-suspect-tile {
+    background: #110e0c;
+    border: 1px solid var(--border-subtle);
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.accuse-suspect-tile:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.accuse-suspect-tile.selected {
+    border: 2px solid var(--red-light);
+    box-shadow: 0 0 15px rgba(220, 53, 69, 0.5);
+    background: #1c0e0e;
+}
+
+.accuse-suspect-thumb {
+    width: 65px;
+    height: 80px;
+    object-fit: cover;
+    margin: 0 auto 0.5rem;
+    display: block;
+    border: 1px solid var(--border-gold);
+}

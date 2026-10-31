@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
+  <defs>
+    <radialGradient id="clueBg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#241d17"/>
+      <stop offset="60%" stop-color="#120e0a"/>
+      <stop offset="100%" stop-color="#080705"/>
+    </radialGradient>
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#604a18"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="260" height="200" fill="url(#clueBg)"/>
+  <rect x="6" y="6" width="248" height="188" fill="none" stroke="url(#goldRim)" stroke-width="1.5"/>
+  <rect x="10" y="10" width="240" height="180" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.8" stroke-dasharray="4,2"/>
+
+  <!-- Evidence Artwork -->
+  <g transform="translate(0, -10)">
+      <rect x="80" y="45" width="100" height="85" fill="#f0ebd8" stroke="#332" stroke-width="1"/>
+  <!-- Left Side: Richard & Eleanor -->
+  <path d="M85,120 C95,95 115,95 125,120 Z" fill="#3a2f26"/>
+  <circle cx="105" cy="85" r="10" fill="#a48466"/>
+  <!-- Jagged Torn Edge Excision -->
+  <path d="M140,45 L135,65 L145,85 L132,105 L142,130" stroke="#8b3a3a" stroke-width="2" fill="none"/>
+  <!-- Missing Figure Cutout -->
+  <rect x="145" y="55" width="30" height="65" fill="#1a140f" stroke="#8b3a3a" stroke-dasharray="3,2" stroke-width="1"/>
+  </g>
+
+  <!-- Tag & Clue Label -->
+  <rect x="15" y="152" width="230" height="35" fill="rgba(10,8,7,0.92)" stroke="url(#goldRim)" stroke-width="1"/>
+  <text x="25" y="167" font-family="'Playfair Display', serif" font-size="11" font-weight="bold" fill="#dfbf67">#5: TORN PHOTOGRAPH</text>
+  <text x="25" y="180" font-family="'Special Elite', monospace" font-size="8" fill="#a09880" letter-spacing="1">MEDIUM • GRAVES EXCISED FROM PHOTO</text>
+</svg>

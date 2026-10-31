@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" width="480" height="240">
+  <defs>
+    <radialGradient id="roomGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#2a2016"/>
+      <stop offset="70%" stop-color="#120e0a"/>
+      <stop offset="100%" stop-color="#050403"/>
+    </radialGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#554015"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wall Background -->
+  <rect width="480" height="240" fill="url(#roomGlow)"/>
+  
+  <!-- Architectural Perspective Lines -->
+  <line x1="0" y1="0" x2="100" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="1.5"/>
+  <line x1="480" y1="0" x2="380" y2="60" stroke="rgba(201,168,76,0.15)" stroke-width="1.5"/>
+  <line x1="0" y1="240" x2="100" y2="180" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+  <line x1="480" y1="240" x2="380" y2="180" stroke="rgba(201,168,76,0.2)" stroke-width="1.5"/>
+  
+  <!-- Interior Room Drawing -->
+    <!-- Tiled Wall Checkerboard Pattern -->
+  <pattern id="tiles" width="20" height="20" patternUnits="userSpaceOnUse">
+    <rect width="10" height="10" fill="#181818"/>
+    <rect x="10" width="10" height="10" fill="#222"/>
+    <rect y="10" width="10" height="10" fill="#222"/>
+    <rect x="10" y="10" width="10" height="10" fill="#181818"/>
+  </pattern>
+  <rect x="70" y="30" width="340" height="120" fill="url(#tiles)" opacity="0.6"/>
+  <!-- Stainless Pantry Counter -->
+  <polygon points="50,140 430,140 410,185 70,185" fill="#2c2c2e" stroke="#555" stroke-width="1"/>
+  <!-- Hanging Pans & Shelves -->
+  <line x1="120" y1="45" x2="360" y2="45" stroke="#c9a84c" stroke-width="2"/>
+  <circle cx="160" cy="65" r="12" fill="#1c1611" stroke="#888" stroke-width="1"/>
+  <circle cx="220" cy="68" r="14" fill="#1c1611" stroke="#888" stroke-width="1"/>
+  <circle cx="280" cy="62" r="10" fill="#1c1611" stroke="#888" stroke-width="1"/>
+  <!-- Poison Bottle on counter -->
+  <rect x="340" y="115" width="14" height="25" fill="#4a1818" stroke="#8b3a3a" stroke-width="1"/>
+
+  <!-- Noir Shadow Vignette Frame -->
+  <rect x="6" y="6" width="468" height="228" fill="none" stroke="url(#goldStroke)" stroke-width="1.5"/>
+  <rect x="10" y="10" width="460" height="220" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="6,3"/>
+
+  <!-- Room Name Overlay Banner -->
+  <rect x="25" y="185" width="430" height="42" fill="rgba(8,7,6,0.88)" stroke="url(#goldStroke)" stroke-width="1"/>
+  <text x="45" y="206" font-family="'Playfair Display', Georgia, serif" font-size="15" font-weight="bold" fill="#dfbf67" letter-spacing="2">KITCHEN & PANTRY</text>
+  <text x="45" y="220" font-family="'Special Elite', monospace" font-size="9" fill="#a09880" letter-spacing="1.5">PREPARATION STATIONS • ARSENIC FOUND</text>
+</svg>
