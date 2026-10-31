@@ -20,7 +20,7 @@ require_once __DIR__ . '/config/config.php';
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700;900&family=Special+Elite&display=swap" rel="stylesheet">
 
     <!-- Noir Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
 </head>
 <body>
 
@@ -101,26 +101,67 @@ require_once __DIR__ . '/config/config.php';
             <div class="dossier-card">
                 <div class="dossier-stamp">CONFIDENTIAL</div>
                 
-                <div class="dossier-typewriter" id="intro-typewriter-text">
-                    <!-- Typed dynamically by JavaScript -->
+                <div class="dossier-typewriter" id="intro-typewriter-text" style="font-family: var(--font-mono); font-size: 0.95rem; line-height: 1.85; color: var(--cream); white-space: normal;">
+                    <p style="color: var(--gold); font-weight: bold; margin-bottom: 0.75rem; letter-spacing: 2px;">
+                        BLACKWOOD CITY POLICE DEPARTMENT — CONFIDENTIAL CASE REPORT<br>
+                        DATE: OCTOBER 13, 1947 &bull; TIME: 00:15 HOURS
+                    </p>
+                    <p style="font-style: italic; color: var(--text-secondary); margin-bottom: 1rem;">
+                        "The rain never stops in this city, and neither does the truth."
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        At midnight, a frantic call summoned Detective Alex Morgan to Blackwood Manor. Richard Blackwood, shipping tycoon and financier, has been found dead inside his private study.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        The single entrance was deadbolted from within. The grandfather clock stopped at exactly 11:13 PM. A confidential audit portfolio has disappeared from the safe, and five people were in the mansion.
+                    </p>
+                    <p style="color: var(--gold-light);">
+                        Search the manor, examine the crime scene, crack the mathematical security ciphers, and interrogate the suspects. Case #13 awaits your deduction.
+                    </p>
                 </div>
 
-                <div class="case-facts-grid">
-                    <div class="case-fact-item">
-                        <h4>VICTIM</h4>
-                        <p>Richard Blackwood (Age 54)</p>
+                <!-- VICTIM DOSSIER WITH EVIDENCE PHOTOGRAPH -->
+                <div class="victim-dossier-wrapper">
+                    <div style="flex-shrink: 0; text-align: center;">
+                        <div style="position: relative; display: inline-block; padding: 6px; background: #161616; border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(201, 168, 76, 0.3);">
+                            <img src="assets/images/richard_blackwood.jpg" alt="Richard Blackwood - Murder Victim" style="width: 145px; height: 185px; object-fit: cover; display: block; filter: contrast(1.05) brightness(0.95); border: 1px solid rgba(255,255,255,0.15);">
+                            <span style="position: absolute; bottom: 12px; right: 10px; background: var(--red); color: #fff; font-family: var(--font-mono); font-size: 0.65rem; padding: 3px 8px; letter-spacing: 1.5px; font-weight: bold; border: 1px solid rgba(255,255,255,0.3); transform: rotate(-6deg); box-shadow: 0 2px 8px rgba(0,0,0,0.8);">DECEASED</span>
+                        </div>
+                        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); margin-top: 0.6rem; letter-spacing: 1.5px;">EVIDENCE FILE #13-A</p>
                     </div>
-                    <div class="case-fact-item">
-                        <h4>LOCATION</h4>
-                        <p>Blackwood Manor, Private Study</p>
-                    </div>
-                    <div class="case-fact-item">
-                        <h4>ESTIMATED TIME OF DEATH</h4>
-                        <p>11:00 PM – 11:30 PM (Clock: 11:13 PM)</p>
-                    </div>
-                    <div class="case-fact-item">
-                        <h4>SUSPECTS PRESENT</h4>
-                        <p>5 Persons of Interest</p>
+
+                    <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
+                                <div>
+                                    <h3 style="font-size: 1.5rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.2rem;">RICHARD BLACKWOOD</h3>
+                                    <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--red-light); letter-spacing: 2px; text-transform: uppercase;">VICTIM &bull; FOUND OCT 13, 1947 &bull; AGE 54</p>
+                                </div>
+                                <span class="badge" style="border-color: var(--red); color: var(--red-light); background: rgba(139, 58, 58, 0.25);">HOMICIDE</span>
+                            </div>
+                            <p style="color: var(--cream-muted); font-size: 0.95rem; line-height: 1.7; margin: 0.85rem 0;">
+                                Wealthy industrialist and president of Blackwood Maritime Ventures. Discovered deceased behind the locked oak doors of his second-floor study. Key financial audit ledgers were forcibly removed from his wall safe.
+                            </p>
+                        </div>
+
+                        <div class="case-facts-grid" style="margin: 0; padding: 0.9rem 1.25rem;">
+                            <div class="case-fact-item">
+                                <h4>ESTIMATED TOD</h4>
+                                <p>11:00 – 11:30 PM</p>
+                            </div>
+                            <div class="case-fact-item">
+                                <h4>CLOCK STOPPED</h4>
+                                <p>11:13 PM</p>
+                            </div>
+                            <div class="case-fact-item">
+                                <h4>CRIME SCENE</h4>
+                                <p>Private Study</p>
+                            </div>
+                            <div class="case-fact-item">
+                                <h4>SUSPECTS</h4>
+                                <p>5 in Mansion</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -608,6 +649,6 @@ require_once __DIR__ . '/config/config.php';
     </style>
 
     <!-- Master Game Script -->
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app.js?v=<?= time() ?>"></script>
 </body>
 </html>

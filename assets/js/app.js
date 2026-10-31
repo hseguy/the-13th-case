@@ -243,7 +243,7 @@ const NoirAudio = {
             gain.connect(this.ctx.destination);
             osc.start();
             osc.stop(this.ctx.currentTime + duration);
-        } catch (e) {}
+        } catch (e) { }
     },
 
     playTypewriter() {
@@ -461,13 +461,13 @@ function saveInvestigation() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
-    .then(res => res.json())
-    .then(data => {
-        showToast("Case file saved to department archives.");
-    })
-    .catch(err => {
-        showToast("Saved locally to browser terminal.");
-    });
+        .then(res => res.json())
+        .then(data => {
+            showToast("Case file saved to department archives.");
+        })
+        .catch(err => {
+            showToast("Saved locally to browser terminal.");
+        });
 }
 
 function loadPersistedGame() {
@@ -476,47 +476,15 @@ function loadPersistedGame() {
         try {
             const parsed = JSON.parse(saved);
             applyLoadedState(parsed);
-        } catch (e) {}
+        } catch (e) { }
     }
 }
 
 /**
- * Story Introduction with Typewriter Animation
+ * Story Introduction
  */
 function playStoryIntro() {
     showScreen('screen-intro');
-    const textTarget = document.getElementById('intro-typewriter-text');
-    if (!textTarget) return;
-
-    const introText = 
-`BLACKWOOD CITY POLICE DEPARTMENT — CONFIDENTIAL CASE REPORT
-DATE: OCTOBER 13, 1947 | TIME: 00:15 HOURS
-
-"The rain never stops in this city, and neither does the truth."
-
-At midnight, a frantic call summoned Detective Alex Morgan to Blackwood Manor.
-Richard Blackwood, shipping tycoon and financier, has been found dead inside his private study.
-
-The single entrance was deadbolted from within. The grandfather clock stopped at exactly 11:13 PM.
-A confidential audit portfolio has disappeared from the safe, and five people were in the mansion.
-
-Search the manor, examine the crime scene, crack the mathematical security ciphers, and interrogate the suspects.
-Case #13 awaits your deduction.`;
-
-    textTarget.innerHTML = '';
-    let idx = 0;
-    const speed = 18;
-
-    function typeChar() {
-        if (idx < introText.length) {
-            textTarget.textContent += introText.charAt(idx);
-            idx++;
-            if (idx % 3 === 0) NoirAudio.playTypewriter();
-            setTimeout(typeChar, speed);
-        }
-    }
-
-    typeChar();
 }
 
 /**
@@ -578,7 +546,20 @@ function openRoomInvestigation(roomId) {
 
     const room = ROOM_DATA[roomId];
     document.getElementById('room-title').textContent = room.name.toUpperCase();
-    document.getElementById('room-desc').textContent = room.desc;
+    
+    if (roomId === 'study') {
+        document.getElementById('room-desc').innerHTML = `
+            <div style="display: flex; gap: 1.25rem; align-items: center; justify-content: center; margin: 1rem 0; flex-wrap: wrap;">
+                <img src="assets/images/richard_blackwood.jpg" alt="Richard Blackwood" style="width: 70px; height: 90px; object-fit: cover; border: 2px solid var(--gold); box-shadow: 0 0 15px rgba(201, 168, 76, 0.3);">
+                <div style="text-align: left; max-width: 520px;">
+                    <strong style="color: var(--gold); font-family: var(--font-mono); font-size: 0.85rem;">CRIME SCENE &bull; VICTIM: RICHARD BLACKWOOD</strong>
+                    <p style="margin-top: 0.25rem; font-size: 0.95rem; color: var(--cream-muted);">${room.desc}</p>
+                </div>
+            </div>
+        `;
+    } else {
+        document.getElementById('room-desc').textContent = room.desc;
+    }
 
     const objectsGrid = document.getElementById('room-objects-grid');
     objectsGrid.innerHTML = '';
@@ -748,69 +729,69 @@ function submitBananaAnswer() {
         method: 'POST',
         body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            feedbackEl.style.display = 'block';
-            if (data.correct) {
-                NoirAudio.playSuccessChime();
-                feedbackEl.className = 'puzzle-feedback feedback-success';
-                feedbackEl.innerHTML = `<strong>✓ CORRECT CIPHER!</strong> ${data.message} (+150 PTS)`;
-                Game.score += 150;
-                Game.puzzleStats.correct++;
-                updateNavUI();
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                feedbackEl.style.display = 'block';
+                if (data.correct) {
+                    NoirAudio.playSuccessChime();
+                    feedbackEl.className = 'puzzle-feedback feedback-success';
+                    feedbackEl.innerHTML = `<strong>✓ CORRECT CIPHER!</strong> ${data.message} (+150 PTS)`;
+                    Game.score += 150;
+                    Game.puzzleStats.correct++;
+                    updateNavUI();
 
-                if (Game.pendingEvidenceId) {
-                    collectEvidence(Game.pendingEvidenceId);
-                }
-
-                setTimeout(() => {
-                    if (Game.currentLocation) {
-                        openRoomInvestigation(Game.currentLocation);
-                    } else {
-                        renderMansionMap();
-                        showScreen('screen-map');
+                    if (Game.pendingEvidenceId) {
+                        collectEvidence(Game.pendingEvidenceId);
                     }
-                }, 2200);
-            } else {
-                NoirAudio.playErrorBuzz();
-                feedbackEl.className = 'puzzle-feedback feedback-error';
-                feedbackEl.innerHTML = `
+
+                    setTimeout(() => {
+                        if (Game.currentLocation) {
+                            openRoomInvestigation(Game.currentLocation);
+                        } else {
+                            renderMansionMap();
+                            showScreen('screen-map');
+                        }
+                    }, 2200);
+                } else {
+                    NoirAudio.playErrorBuzz();
+                    feedbackEl.className = 'puzzle-feedback feedback-error';
+                    feedbackEl.innerHTML = `
                     <strong>✗ INCORRECT CIPHER!</strong> ${data.message} (-25 PTS)
                     <div style="margin-top: 0.85rem; display: flex; gap: 0.75rem; justify-content: center;">
                         <button class="btn btn-small btn-primary" onclick="fetchBananaPuzzle()">🔄 FETCH NEW CIPHER</button>
                     </div>
                 `;
-                Game.score = Math.max(0, Game.score - 25);
-                Game.mistakes++;
-                Game.puzzleStats.incorrect++;
-                updateNavUI();
+                    Game.score = Math.max(0, Game.score - 25);
+                    Game.mistakes++;
+                    Game.puzzleStats.incorrect++;
+                    updateNavUI();
 
+                    if (submitBtn) submitBtn.disabled = false;
+                    if (inputEl) {
+                        inputEl.disabled = false;
+                        inputEl.select();
+                        inputEl.focus();
+                    }
+
+                    // Check mistake limit
+                    if (Game.mistakes >= Game.mistakeLimit) {
+                        setTimeout(() => triggerCaseFailedMistakes(), 1500);
+                    }
+                }
+                updatePuzzleStatsUI();
+            } else {
+                showToast(data.error || "Submission failed.");
+                if (data.error && data.error.includes("already been answered")) {
+                    fetchBananaPuzzle();
+                }
                 if (submitBtn) submitBtn.disabled = false;
-                if (inputEl) {
-                    inputEl.disabled = false;
-                    inputEl.select();
-                    inputEl.focus();
-                }
-
-                // Check mistake limit
-                if (Game.mistakes >= Game.mistakeLimit) {
-                    setTimeout(() => triggerCaseFailedMistakes(), 1500);
-                }
             }
-            updatePuzzleStatsUI();
-        } else {
-            showToast(data.error || "Submission failed.");
-            if (data.error && data.error.includes("already been answered")) {
-                fetchBananaPuzzle();
-            }
+        })
+        .catch(err => {
+            showToast("Network error submitting answer.");
             if (submitBtn) submitBtn.disabled = false;
-        }
-    })
-    .catch(err => {
-        showToast("Network error submitting answer.");
-        if (submitBtn) submitBtn.disabled = false;
-    });
+        });
 }
 
 function skipPuzzle() {
@@ -950,26 +931,26 @@ function compareBoardEvidence() {
         method: 'POST',
         body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-        const resultEl = document.getElementById('board-result');
-        if (resultEl) {
-            resultEl.style.display = 'block';
-            if (data.connected) {
-                NoirAudio.playClueChime();
-                resultEl.className = 'puzzle-feedback feedback-success';
-                resultEl.innerHTML = `<strong>🎯 VITAL CONNECTION DISCOVERED! (+100 PTS)</strong><p style="margin-top: 0.5rem; line-height: 1.7;">${data.explanation}</p>`;
-                Game.score = data.total_score || (Game.score + 100);
-                updateNavUI();
-            } else {
-                resultEl.className = 'puzzle-feedback feedback-error';
-                resultEl.innerHTML = `<strong>NO DIRECT DEDUCTION</strong><p style="margin-top: 0.5rem;">${data.explanation}</p>`;
+        .then(res => res.json())
+        .then(data => {
+            const resultEl = document.getElementById('board-result');
+            if (resultEl) {
+                resultEl.style.display = 'block';
+                if (data.connected) {
+                    NoirAudio.playClueChime();
+                    resultEl.className = 'puzzle-feedback feedback-success';
+                    resultEl.innerHTML = `<strong>🎯 VITAL CONNECTION DISCOVERED! (+100 PTS)</strong><p style="margin-top: 0.5rem; line-height: 1.7;">${data.explanation}</p>`;
+                    Game.score = data.total_score || (Game.score + 100);
+                    updateNavUI();
+                } else {
+                    resultEl.className = 'puzzle-feedback feedback-error';
+                    resultEl.innerHTML = `<strong>NO DIRECT DEDUCTION</strong><p style="margin-top: 0.5rem;">${data.explanation}</p>`;
+                }
             }
-        }
-    })
-    .catch(err => {
-        showToast("Comparison analysis failed.");
-    });
+        })
+        .catch(err => {
+            showToast("Comparison analysis failed.");
+        });
 }
 
 /**
@@ -1051,18 +1032,8 @@ function askSuspectQuestion(suspectKey, q) {
     const dialogueText = document.getElementById('interrogate-dialogue-text');
 
     if (dialogueText) {
-        dialogueText.textContent = '';
-        let i = 0;
-        const text = `"${q.answer}"`;
-        function typeResponse() {
-            if (i < text.length) {
-                dialogueText.textContent += text.charAt(i);
-                i++;
-                if (i % 4 === 0) NoirAudio.playTypewriter();
-                setTimeout(typeResponse, 16);
-            }
-        }
-        typeResponse();
+        dialogueText.textContent = `"${q.answer}"`;
+        NoirAudio.playTypewriter();
     }
 
     // Send to backend
@@ -1075,26 +1046,26 @@ function askSuspectQuestion(suspectKey, q) {
         method: 'POST',
         body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                if (!Game.suspectsInterrogated[suspectKey].includes(q.id)) {
+                    Game.suspectsInterrogated[suspectKey].push(q.id);
+                    Game.score += 75;
+                    updateNavUI();
+                    showToast("Statement logged (+75 PTS)");
+                }
+                renderQuestionList(suspectKey);
+            }
+        })
+        .catch(err => {
             if (!Game.suspectsInterrogated[suspectKey].includes(q.id)) {
                 Game.suspectsInterrogated[suspectKey].push(q.id);
                 Game.score += 75;
                 updateNavUI();
-                showToast("Statement logged (+75 PTS)");
             }
             renderQuestionList(suspectKey);
-        }
-    })
-    .catch(err => {
-        if (!Game.suspectsInterrogated[suspectKey].includes(q.id)) {
-            Game.suspectsInterrogated[suspectKey].push(q.id);
-            Game.score += 75;
-            updateNavUI();
-        }
-        renderQuestionList(suspectKey);
-    });
+        });
 }
 
 /**
@@ -1168,31 +1139,31 @@ function submitAccusation() {
         method: 'POST',
         body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            renderEndingScreen(data);
-        }
-    })
-    .catch(err => {
-        // Local evaluation fallback
-        const isVictor = (suspectId === 5);
-        const isFraud = motive.toLowerCase().includes('fraud');
-        const count = selectedEvidence.length;
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                renderEndingScreen(data);
+            }
+        })
+        .catch(err => {
+            // Local evaluation fallback
+            const isVictor = (suspectId === 5);
+            const isFraud = motive.toLowerCase().includes('fraud');
+            const count = selectedEvidence.length;
 
-        let ending = {
-            ending_type: isVictor && isFraud && count >= 3 ? 'PERFECT_DETECTIVE' : (isVictor ? 'CASE_SOLVED' : 'CASE_FAILED'),
-            title: isVictor && isFraud ? "PERFECT DETECTIVE — JUSTICE IN BLACKWOOD CITY" : (isVictor ? "CASE SOLVED — THE LAWYER ARRESTED" : "CASE FAILED — AN INNOCENT CONDEMNED"),
-            summary: isVictor 
-                ? "Victor Graves collapsed into the study chair and confessed to Chief Inspector Vance. The altered clock, Turkish cigarettes, and secret passage map proved his guilt beyond a reasonable doubt."
-                : "Your accusation missed the true culprit. Victor Graves escaped into the fog with the bearer bonds.",
-            badge: isVictor ? "LEGENDARY DETECTIVE" : "FAILED",
-            final_score: Game.score + (isVictor ? 500 : -200),
-            puzzles_solved: Game.puzzleStats.correct,
-            evidence_count: Game.evidenceCollected.length
-        };
-        renderEndingScreen(ending);
-    });
+            let ending = {
+                ending_type: isVictor && isFraud && count >= 3 ? 'PERFECT_DETECTIVE' : (isVictor ? 'CASE_SOLVED' : 'CASE_FAILED'),
+                title: isVictor && isFraud ? "PERFECT DETECTIVE — JUSTICE IN BLACKWOOD CITY" : (isVictor ? "CASE SOLVED — THE LAWYER ARRESTED" : "CASE FAILED — AN INNOCENT CONDEMNED"),
+                summary: isVictor
+                    ? "Victor Graves collapsed into the study chair and confessed to Chief Inspector Vance. The altered clock, Turkish cigarettes, and secret passage map proved his guilt beyond a reasonable doubt."
+                    : "Your accusation missed the true culprit. Victor Graves escaped into the fog with the bearer bonds.",
+                badge: isVictor ? "LEGENDARY DETECTIVE" : "FAILED",
+                final_score: Game.score + (isVictor ? 500 : -200),
+                puzzles_solved: Game.puzzleStats.correct,
+                evidence_count: Game.evidenceCollected.length
+            };
+            renderEndingScreen(ending);
+        });
 }
 
 function triggerCaseFailedMistakes() {
