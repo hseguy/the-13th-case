@@ -16,6 +16,21 @@ if (session_status() === PHP_SESSION_NONE) {
             @session_save_path($localTmp);
         }
     }
+
+    // Enterprise session security settings (Virtual Identity hardening)
+    if (PHP_VERSION_ID >= 70300) {
+        session_set_cookie_params([
+            'lifetime' => 86400 * 7,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]);
+    } else {
+        session_set_cookie_params(86400 * 7, '/; samesite=Lax', '', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on', true);
+    }
+
     @session_start();
 }
 
