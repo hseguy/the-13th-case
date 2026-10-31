@@ -239,12 +239,12 @@ require_once __DIR__ . '/config/config.php';
                     </div>
                 </div>
 
-                <div class="puzzle-controls">
-                    <input type="number" id="puzzle-answer-input" class="puzzle-input" min="0" max="9" placeholder="?" autocomplete="off" onkeydown="if(event.key==='Enter') submitBananaAnswer();">
-                    <button class="btn btn-primary" id="puzzle-submit-btn" onclick="submitBananaAnswer()">DECIPHER</button>
-                    <button class="btn btn-small" onclick="fetchBananaPuzzle()" title="Get a different puzzle">🔄 NEW CIPHER</button>
-                    <button class="btn btn-small" onclick="skipPuzzle()">BYPASS (-50 PTS)</button>
-                </div>
+                <form id="puzzle-form" class="puzzle-controls" onsubmit="event.preventDefault(); submitBananaAnswer();">
+                    <input type="number" id="puzzle-answer-input" class="puzzle-input" min="0" max="9" placeholder="?" autocomplete="off">
+                    <button type="submit" class="btn btn-primary" id="puzzle-submit-btn">DECIPHER</button>
+                    <button type="button" class="btn btn-small" onclick="fetchBananaPuzzle()" title="Get a different puzzle">🔄 NEW CIPHER</button>
+                    <button type="button" class="btn btn-small" onclick="skipPuzzle()">BYPASS (-50 PTS)</button>
+                </form>
 
                 <div id="puzzle-feedback" class="puzzle-feedback" style="display: none;"></div>
 
@@ -354,6 +354,13 @@ require_once __DIR__ . '/config/config.php';
                     <div class="dialogue-box">
                         <div class="dialogue-speaker">SUSPECT RESPONSE</div>
                         <div class="dialogue-text" id="interrogate-dialogue-text">"Ask what you will, Detective Morgan."</div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.25rem;">
+                        <label for="interrogate-dialogue-select" class="form-label" style="font-size: 0.8rem; letter-spacing: 2px;">QUICK INQUIRY (SELECT QUESTION):</label>
+                        <select id="interrogate-dialogue-select" class="form-select">
+                            <option value="">-- CHOOSE A LINE OF QUESTIONING --</option>
+                        </select>
                     </div>
 
                     <h4 style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.85rem;">AVAILABLE INQUIRIES:</h4>

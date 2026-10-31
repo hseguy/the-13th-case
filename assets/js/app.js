@@ -313,6 +313,30 @@ document.addEventListener('DOMContentLoaded', function () {
             if (e.target === authModal) closeAuthModal();
         });
     }
+
+    // Theme 2: Event-Driven Programming - Submit Event for Banana API Puzzles
+    const puzzleForm = document.getElementById('puzzle-form');
+    if (puzzleForm) {
+        puzzleForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            submitBananaAnswer();
+        });
+    }
+
+    // Theme 2: Event-Driven Programming - Change Events for Final Accusation Selectors
+    const accuseSuspect = document.getElementById('accuse-suspect-select');
+    if (accuseSuspect) {
+        accuseSuspect.addEventListener('change', function () {
+            NoirAudio.playClick();
+        });
+    }
+
+    const accuseMotive = document.getElementById('accuse-motive-select');
+    if (accuseMotive) {
+        accuseMotive.addEventListener('change', function () {
+            NoirAudio.playClick();
+        });
+    }
 });
 
 /**
@@ -1058,11 +1082,16 @@ function openInterrogation(suspectKey) {
 
 function renderQuestionList(suspectKey) {
     const listEl = document.getElementById('interrogate-question-list');
+    const selectEl = document.getElementById('interrogate-dialogue-select');
     if (!listEl) return;
     listEl.innerHTML = '';
 
     const s = SUSPECTS_DATA[suspectKey];
     const askedList = Game.suspectsInterrogated[suspectKey] || [];
+
+    if (selectEl) {
+        selectEl.innerHTML = '<option value="">-- CHOOSE A LINE OF QUESTIONING --</option>';
+    }
 
     s.questions.forEach(q => {
         const isAsked = askedList.includes(q.id);
@@ -1072,10 +1101,31 @@ function renderQuestionList(suspectKey) {
 
         btn.addEventListener('click', () => {
             askSuspectQuestion(suspectKey, q);
+            if (selectEl) selectEl.value = q.id;
         });
 
         listEl.appendChild(btn);
+
+        if (selectEl) {
+            const opt = document.createElement('option');
+            opt.value = q.id;
+            opt.textContent = `${isAsked ? '✓ ' : ''}${q.text}`;
+            selectEl.appendChild(opt);
+        }
     });
+
+    // Theme 2: Change event listener for suspect dialogue choice
+    if (selectEl) {
+        selectEl.onchange = (e) => {
+            const selectedId = parseInt(e.target.value);
+            if (selectedId) {
+                const targetQ = s.questions.find(item => item.id === selectedId);
+                if (targetQ) {
+                    askSuspectQuestion(suspectKey, targetQ);
+                }
+            }
+        };
+    }
 }
 
 function askSuspectQuestion(suspectKey, q) {
