@@ -331,6 +331,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Theme 2: Event-Driven Keyboard Accessibility Listeners
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeModal();
+            closeAuthModal();
+        }
+    });
     const accuseMotive = document.getElementById('accuse-motive-select');
     if (accuseMotive) {
         accuseMotive.addEventListener('change', function () {
