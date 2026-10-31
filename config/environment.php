@@ -37,3 +37,4 @@ function logDetectiveAudit($action, $details = []) {
     );
     @file_put_contents($logFile, $entry, FILE_APPEND);
 }
+

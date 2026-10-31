@@ -56,3 +56,4 @@ try {
         'timestamp' => date('c')
     ], 500);
 }
+
