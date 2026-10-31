@@ -53,6 +53,7 @@ switch ($action) {
 function handleFetch() {
     $apiUrl = BANANA_API_URL;
     $rawResponse = null;
+    $startTime = microtime(true);
 
     // Use cURL for reliable network fetching with timeout
     if (function_exists('curl_init')) {
@@ -101,11 +102,16 @@ function handleFetch() {
     $_SESSION['banana_timestamp'] = time();
     $_SESSION['banana_answered'] = false;
 
+    $latencyMs = round((microtime(true) - $startTime) * 1000, 2);
+    header("X-Banana-API-Latency-Ms: {$latencyMs}");
+    header("X-Proxy-Provider: The-13th-Case-Enterprise-Gateway");
+
     // Return ONLY the question URL to prevent client-side inspection
     sendJsonResponse([
         'success'      => true,
         'question_url' => $data['question'],
-        'stats'        => $_SESSION['puzzle_stats']
+        'stats'        => $_SESSION['puzzle_stats'],
+        'latency_ms'   => $latencyMs
     ]);
 }
 
