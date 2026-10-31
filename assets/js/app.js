@@ -128,7 +128,7 @@ const SUSPECTS_DATA = {
         name: 'Eleanor Blackwood',
         role: "Victim's Wife",
         avatar: '👩',
-        image: 'assets/images/suspect_eleanor.svg',
+        image: 'assets/images/suspect_eleanor.jpg',
         motive: 'Inheritance & Marital Estrangement',
         bio: 'Elegant and poised, Eleanor married Richard twelve years ago. Their marriage had grown distant, but she maintains her innocence.',
         questions: [
@@ -144,7 +144,7 @@ const SUSPECTS_DATA = {
         name: 'Thomas Reed',
         role: 'Business Partner',
         avatar: '👨‍💼',
-        image: 'assets/images/suspect_thomas.svg',
+        image: 'assets/images/suspect_thomas.jpg',
         motive: 'Financial Disputes & Debt Pressure',
         bio: 'Co-owner of Blackwood Shipping & Rail. Known for aggressive investments and volatile arguments with Richard.',
         questions: [
@@ -160,7 +160,7 @@ const SUSPECTS_DATA = {
         name: 'Henry Collins',
         role: 'Head Butler',
         avatar: '🤵',
-        image: 'assets/images/suspect_henry.svg',
+        image: 'assets/images/suspect_henry.jpg',
         motive: 'Blackmail & Past Transgressions',
         bio: 'Has managed Blackwood Manor for over two decades. Discreet, observant, and aware of every hidden passage.',
         questions: [
@@ -176,7 +176,7 @@ const SUSPECTS_DATA = {
         name: 'Margaret Hayes',
         role: 'Investigative Journalist',
         avatar: '🕵️‍♀️',
-        image: 'assets/images/suspect_margaret.svg',
+        image: 'assets/images/suspect_margaret.jpg',
         motive: 'Revenge & Exposé Scoop',
         bio: 'Hard-hitting press reporter for the Blackwood City Daily. Richard had promised her an exclusive whistleblower interview.',
         questions: [
