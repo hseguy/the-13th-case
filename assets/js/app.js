@@ -58,7 +58,7 @@ const ROOM_DATA = {
         id: 'study',
         name: 'Private Study',
         icon: '🔍',
-        image: 'assets/images/room_study.svg',
+        image: 'assets/images/room_study.jpg',
         desc: 'The scene of the crime. Richard Blackwood was found behind his mahogany desk. The single door was locked from the inside.',
         objects: [
             { id: 'study_clock', name: 'Stopped Clock', icon: '🕰️', evidenceId: 1, puzzle: true, desc: 'A towering grandfather clock frozen at 11:13 PM. The mechanism has been tampered with. Decipher the lockwork code to examine it.' },
