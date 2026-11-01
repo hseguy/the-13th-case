@@ -290,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initScreenNavigation();
     loadPersistedGame();
     checkAuthStatus();
+    setInterval(checkAuthStatus, 60000); // 10-minute session inactivity check
 
     // "BEGIN INVESTIGATION" button on landing screen
     const beginBtn = document.getElementById('btn-begin');
@@ -1442,6 +1443,10 @@ function checkAuthStatus() {
     fetch('api/auth.php?action=check')
         .then(res => res.json())
         .then(data => {
+            if (data.session_expired) {
+                showToast("⚠️ Shift timed out: 10 minutes of inactivity. Please log in again.");
+                openAuthModal('login');
+            }
             if (data.success && data.logged_in && data.user) {
                 Game.user = {
                     loggedIn: true,

@@ -320,12 +320,18 @@ if (!password_verify($password, $hash)) {
 }
 ```
 
-#### B. Session-Based Authentication & Hardened Cookies
+#### B. Session-Based Authentication & Hardened 10-Minute Expiry
+Upon successful authentication, the server establishes a virtual identity linked to a secure session token. In config/config.php, session cookie parameters and server-side inactivity timeouts are explicitly hardened to a **10-minute lifespan (600 seconds)**:
+`php
+define('SESSION_LIFETIME', 600); // 10 minutes in seconds
+ini_set('session.gc_maxlifetime', SESSION_LIFETIME);
+`
+If 10 minutes elapse without player interaction, the server purges the in-memory array ($_SESSION = []), invalidates the client cookie, destroys the server session file, and flags session_expired = true.
 Upon successful authentication, the server establishes a virtual identity linked to a secure session token. In `config/config.php`, session cookie parameters are explicitly hardened:
 ```php
 // File: config/config.php (lines 18-27)
 session_set_cookie_params([
-    'lifetime' => 86400 * 7,    // 7-day persistence
+    'lifetime' => 600,            // 10-minute session lifetime (600s)
     'path'     => '/',
     'domain'   => '',
     'secure'   => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',

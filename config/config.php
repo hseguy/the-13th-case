@@ -4,6 +4,9 @@
  * 1947 Blackwood City Detective Mystery
  */
 
+// Enterprise Session Configuration (10 Minutes Expiry)
+define('SESSION_LIFETIME', 600); // 10 minutes in seconds
+
 if (session_status() === PHP_SESSION_NONE) {
     // Ensure session directory is writable across environments
     $savePath = session_save_path();
@@ -20,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
     // Enterprise session security settings (Virtual Identity hardening)
     if (PHP_VERSION_ID >= 70300) {
         session_set_cookie_params([
-            'lifetime' => 86400 * 7,
+            'lifetime' => SESSION_LIFETIME,
             'path'     => '/',
             'domain'   => '',
             'secure'   => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
@@ -28,10 +31,27 @@ if (session_status() === PHP_SESSION_NONE) {
             'samesite' => 'Lax'
         ]);
     } else {
-        session_set_cookie_params(86400 * 7, '/; samesite=Lax', '', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on', true);
+        session_set_cookie_params(SESSION_LIFETIME, '/; samesite=Lax', '', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on', true);
     }
 
+    ini_set('session.gc_maxlifetime', SESSION_LIFETIME);
     @session_start();
+
+    // 10-Minute Inactivity Timeout Check (Theme 4: Virtual Identity Security)
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > SESSION_LIFETIME)) {
+        $_SESSION = [];
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        @session_destroy();
+        @session_start();
+        $_SESSION['session_expired'] = true;
+    }
+    $_SESSION['last_activity'] = time();
 }
 
 require_once __DIR__ . '/environment.php';

@@ -32,6 +32,22 @@ function makePairKey($id1, $id2) {
     return ($a < $b) ? "$a-$b" : "$b-$a";
 }
 
+// Theme 4: Enforce Active Authenticated Virtual Identity & 10-Min Session Expiry
+if (empty($_SESSION['user_id'])) {
+    $wasExpired = !empty($_SESSION['session_expired']);
+    if ($wasExpired) {
+        unset($_SESSION['session_expired']);
+    }
+    sendJsonResponse([
+        'success'         => false,
+        'auth_required'   => true,
+        'session_expired' => $wasExpired,
+        'error'           => $wasExpired
+            ? 'Detective badge clearance expired after 10 minutes of inactivity. Please login again.'
+            : 'Detective authentication required. Please login or register to begin the investigation.'
+    ], 401);
+}
+
 switch ($action) {
     case 'init':
         handleInit();
