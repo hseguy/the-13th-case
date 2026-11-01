@@ -72,7 +72,7 @@ const ROOM_DATA = {
         id: 'living_room',
         name: 'Living Room',
         icon: '🛋️',
-        image: 'assets/images/room_living_room.svg',
+        image: 'assets/images/room_living_room.jpg',
         desc: 'Where the guests and household gathered prior to midnight. Rain lashes against the tall French bay windows.',
         objects: [
             { id: 'lr_photo', name: 'Torn Photograph', icon: '🖼️', evidenceId: 5, puzzle: false, desc: 'A silver frame knocked flat on the side table. The photograph has been deliberately sliced.' },
@@ -85,7 +85,7 @@ const ROOM_DATA = {
         id: 'kitchen',
         name: 'Kitchen & Pantry',
         icon: '🍳',
-        image: 'assets/images/room_kitchen.svg',
+        image: 'assets/images/room_kitchen.jpg',
         desc: 'A cavernous tiled kitchen. The staff had prepared evening tea and cocktails before retiring.',
         objects: [
             { id: 'k_poison', name: 'Poison Bottle', icon: '☠️', evidenceId: 7, puzzle: false, desc: 'A bottle of rat poison placed right behind the sugar canisters, almost as if someone wanted it found.' },
@@ -97,7 +97,7 @@ const ROOM_DATA = {
         id: 'library',
         name: 'Grand Library',
         icon: '📚',
-        image: 'assets/images/room_library.svg',
+        image: 'assets/images/room_library.jpg',
         desc: 'Floor-to-ceiling oak bookshelves. Richard often retreated here for private research and negotiations.',
         objects: [
             { id: 'lib_bookshelf', name: 'Secret Bookshelf Compartment', icon: '📖', evidenceId: 8, puzzle: true, desc: 'A hollowed leather encyclopedia conceals a mechanical brass dial. Solve the cryptogram to slide the panel.' },
@@ -109,7 +109,7 @@ const ROOM_DATA = {
         id: 'basement',
         name: 'Secret Basement',
         icon: '🚪',
-        image: 'assets/images/room_basement.svg',
+        image: 'assets/images/room_basement.jpg',
         desc: 'A subterranean wine cellar and vault beneath the manor. Connected via the secret passage.',
         locked: true,
         objects: [
